@@ -64,27 +64,27 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="phone-count" type="text" class="form-control text-center" value="0">
-                    <!-- <input class="inp-style inp-width" type="number" name=""> -->
+                    <input id="first-class-ticket-count" type="text" class="form-control text-center" value="0">
+                
                 </div>
                 <div>
-                    <button onclick="handleProductChange('phone', true)" class="plus-minus-btn"><i class="fas fa-plus"></i></button>
-                    <button onclick="handleProductChange('phone', false)" class="plus-minus-btn"><i class="fas fa-minus"></i></button>
+                    <button onclick="handleProductChange('first-class-ticket', true)" class="plus-minus-btn"><i class="fas fa-plus"></i></button>
+                    <button onclick="handleProductChange('first-class-ticket', false)" class="plus-minus-btn"><i class="fas fa-minus"></i></button>
                 </div>
-                <h5 id="phone-total">$00</h5>
+                <h5 id="first-class-ticket-total">$00</h5>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input id="case-count" type="text" class="form-control text-center" value="0">
+                    <input id="economy-ticket-count" type="text" class="form-control text-center" value="0">
 
                 </div>
                 <div>
-                    <button onclick="handleProductChange('case', true)" class="plus-minus-btn"><i class="fas fa-plus"></i></button>
-                    <button onclick="handleProductChange('case', false)" class="plus-minus-btn"><i class="fas fa-minus"></i></button>
+                    <button onclick="handleProductChange('economy-ticket', true)" class="plus-minus-btn"><i class="fas fa-plus"></i></button>
+                    <button onclick="handleProductChange('economy-ticket', false)" class="plus-minus-btn"><i class="fas fa-minus"></i></button>
                 </div>
-                <h5 id="case-total">$00</h5>
+                <h5 id="economy-ticket-total">$00</h5>
             </div>
             <div class="calculations">
                 <div class="amount">
@@ -101,7 +101,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <h4 id="tax-amount">$00</h4>
+                        <h4 id="vat-amount">$00</h4>
                     </div>
                 </div>
                 <hr>
@@ -135,7 +135,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OKAY</button>
+          <button type="button" class="btn btn-primary">OKAY</button>
         </div>
       </div>
     </div>
@@ -158,10 +158,10 @@
             }
             document.getElementById(product + '-count').value = productNewCount;
             let productTotal = 0;
-            if (product == 'phone') {
+            if (product == 'first-class-ticket') {
                 productTotal = productNewCount * 150;
             }
-            if (product == 'case') {
+            if (product == 'economy-ticket') {
                 productTotal = productNewCount * 100;
             }
 
@@ -170,14 +170,14 @@
         }
 
         function calculateTotal() {
-            const phoneCount = getInputValue('phone');
-            const caseCount = getInputValue('case');
+            const firstClassTicketCount = getInputValue('first-class-ticket');
+            const economyTicketCount = getInputValue('economy-ticket');
 
-            const totalPrice = phoneCount * 150 + caseCount * 100;
+            const totalPrice = firstClassTicketCount * 150 + economyTicketCount * 100;
             document.getElementById('total-price').innerText = '$' + totalPrice;
 
-            const tax = Math.round(totalPrice * 0.1);
-            document.getElementById('tax-amount').innerText = '$' + tax;
+            const vat = Math.round(totalPrice * 0.1);
+            document.getElementById('vat-amount').innerText = '$' + vat;
 
             const grandTotal = totalPrice + tax;
             document.getElementById('grand-total').innerText = '$' + grandTotal;
